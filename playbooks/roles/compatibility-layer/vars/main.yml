@@ -1,0 +1,7 @@
+# Vars file for the compatibility layer role.
+---
+gentoo_prefix_path: "/cvmfs/pilot.eessi-hpc.org/2020.10/compat/{{ eessi_host_arch }}"
+prefix_singularity_command: "singularity run -B{{ gentoo_prefix_path }}:{{ gentoo_prefix_path }}"
+prefix_source: "docker://eessi/bootstrap-prefix:centos8-{{ eessi_host_arch }}"
+prefix_source_options: "{{ gentoo_prefix_path }} noninteractive"
+prefix_install: "{{ prefix_singularity_command}} {{ prefix_source }} {{ prefix_source_options }}"

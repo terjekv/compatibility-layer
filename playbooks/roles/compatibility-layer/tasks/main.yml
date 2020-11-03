@@ -1,6 +1,6 @@
-# TODO: when startprefix does not exist
-# use container to install prefix?
-#- include_tasks: install_prefix.yml
+- include_tasks: install_prefix.yml
+  tags:
+    - prefix
 
 - name: Check if a Prefix installation is found at the specified location
   stat:
