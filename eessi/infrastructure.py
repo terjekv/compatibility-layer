@@ -32,14 +32,18 @@ class Infrastructure:
         Stringify object.
         """
         if self.state:
+            print(self.state)
             string = "Mode: {}".format(self.mode)
             for node in self.nodes:
                 if node.public_dns:
                     string = "{}\n {}: {}".format(string, node.arch, node.public_dns)
+                else:
+                    string = "{}\n {} (not applied)".format(string, node.arch)
+
             return string
-        else: 
-            return "Mode: {}\n{}".format(self.mode,
-                                         "\n ".join(str(n) for n in self.nodes))
+
+        return "Mode: {}\n{}".format(self.mode,
+                                     "\n ".join(str(n) for n in self.nodes))
 
     def update_state(self):
         """
